@@ -4,11 +4,10 @@ using System.Text;
 
 namespace csharpHola.entities
 {
-    class Ticket
+    public class Ticket
     {
         private String _ticketCode;
         private DateTime _dateEmission;
-        private String _currentWorkerCode;
         private String _clientCode;
 
         public String TicketCode
@@ -21,11 +20,6 @@ namespace csharpHola.entities
             get => _dateEmission;
             set => _dateEmission = value;
         }
-        public String ClientCurrentWorkerCode
-        {
-            get => _currentWorkerCode;
-            set => _currentWorkerCode = value;
-        }
         public String ClientCode
         {
             get => _clientCode;
@@ -35,13 +29,11 @@ namespace csharpHola.entities
         public Ticket(
             String ticketCode,
             DateTime dateEmission,
-            String currentworkercode,
             String clientCode
             ) 
         {
             this.TicketCode = ticketCode;
             this.DateEmission = dateEmission;
-            this.ClientCurrentWorkerCode = currentworkercode;
             this.ClientCode = clientCode;
         }
     }

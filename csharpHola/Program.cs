@@ -4,6 +4,8 @@ using csharpHola.entities;
 using csharpHola.controllers;
 using System.Collections.Generic;
 using csharpHola.utils;
+using MySqlConnector;
+using csharpHola.models;
 
 namespace csharpHola
 {
@@ -11,6 +13,11 @@ namespace csharpHola
     {
         public bool isCorrect;
         public List<T> a;
+        public void holasoygenerico()
+        {
+            dynamic hola = "555";
+            hola = 32;
+        }
     }
 
     class Program
@@ -21,30 +28,33 @@ namespace csharpHola
         {
             isRunning = false;
         }
+
         private static void Options(String option)
         {
             ControllerTicket CTicket = new ControllerTicket();
             switch (option)
             {
                 case Commands.CREATE_CLIENT:
-                    controllerCliente CCliente = null;
-                    CCliente = new controllerCliente();
-                    CCliente.CreateClient();
-                    Console.WriteLine("craete client instance");
+                    controllerCliente.getInstance().CreateClient();
                     break;
-                case Commands.CREATE_WORKER:
-                    break;
+
                 case Commands.CREATE_TICKET:
                     DateTime a = new DateTime(2020, 12, 20);
-                    CTicket.CreateTicket("555",a,"111","195");
+                    CTicket.CreateTicket("555",a,"195");
                     Store.GetInstance().tickets.ForEach(p => Console.WriteLine(p.ClientCode));//test
                     break;
+
                 case Commands.DELETE_TICKET:
                     CTicket.DestroyTicket("195");
+                    break;
+
+                case Commands.GET_CLIENTS:
+                    
                     break;
                 case Commands.VERSION_TICKET:
                     Console.WriteLine("version 0.6 estimated");
                     break;
+
                 case Commands.QUIT_APP:
                     CloseApp();
                     break;
@@ -60,9 +70,7 @@ namespace csharpHola
         }
         static void Main()
         {
-            dynamic hola = "555";
-            hola = 32;
-            Program app = new Program();
+            ModelClient.GetInstance().getClients();
             LoopApp();
         }
     }

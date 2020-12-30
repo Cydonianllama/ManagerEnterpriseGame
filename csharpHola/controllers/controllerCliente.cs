@@ -3,59 +3,66 @@ using System.Collections.Generic;
 using System.Text;
 using csharpHola.entities;
 using csharpHola.utils;
+using csharpHola.models;
 
 namespace csharpHola.controllers
 {
     class RepoCliente
     {
         private static RepoCliente _repoClient;
-
         public static RepoCliente GetInstance(){
             if(_repoClient == null){
                 _repoClient = new RepoCliente();
             }
             return _repoClient;
         }
-
-        public void clearAuxClient(Cliente c){
-            c = null;
-        }
-    
     }
 
     class controllerCliente
     {
-        Cliente c = null;
-        Trabajador t = null;
+        Client c = null;
 
-        public void CreateClient()
+        private static controllerCliente cc;
+        public static controllerCliente getInstance()
         {
-
-            /*
-            String ID,
-            DateTime emission,
-            DateTime expiration,
-            String name,
+            if (cc == null) 
+            {
+                cc = new controllerCliente();
+            }
+            return cc;
+        }
+        public void CreateClient(
+            String Id, 
+            DateTime emission ,
+            DateTime  expiration,
+            String nameDocument,
             String fullname,
-            String codeclient
-             */
-
-            Console.WriteLine("Hello, Im worked fine");
-            DateTime emission = new DateTime(2020, 12, 26);
-            DateTime expiration = new DateTime();
-
-            c = new Cliente(
-                "1111",
+            String Code)
+        {
+            c = new Client(
+                Id,
                 emission,
                 expiration,
-                "DNI",
-                "Alberto Fujimori",
-                "5558846");
+                nameDocument,
+                fullname,
+                Code);
 
             Store.GetInstance().clients.Add(c);
-            Console.WriteLine("Hello, Im worked fine");
-            RepoCliente.GetInstance().clearAuxClient(c);
-
+            Store.GetInstance().clients.ForEach(e => Console.WriteLine(e.FullName));
+        }
+        public void CreateClient()
+        {
+            Console.WriteLine("Documents :");
+            Console.WriteLine("----------");
+            Console.WriteLine("code (generated-automatic)");
+            Console.WriteLine("fullname :");
+            String Fullname = Console.ReadLine();
+            Console.WriteLine("BirthDate /y/m/d :");
+            String DateBirthdate = Console.ReadLine();
+            DateTime BirthDate = DateTime.Parse(DateBirthdate);
+            c.EmissionDate = BirthDate;
+            c.FullName = Fullname;
+            ModelClient.GetInstance().createClient(c);
         }
         public void DeleteClient()
         {
@@ -69,5 +76,10 @@ namespace csharpHola.controllers
         {
 
         }
+        private controllerCliente()
+        {
+            // this is a singleton
+        }
     }
+
 }

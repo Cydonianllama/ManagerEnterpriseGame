@@ -10,11 +10,16 @@ namespace csharpHola.utils
         private static Store _store;
 
         //this is the store of my app
-        public List<Trabajador> workers = new List<Trabajador>();
-        public List<Cliente> clients = new List<Cliente>() ;
+        public List<Client> clients = new List<Client>() ;
         public List<Ticket> tickets = new List<Ticket>();
 
         private Store() { }
+
+        public void addClientToStore(Client c)
+        {
+            clients.Add(c);
+        }
+
         public static Store GetInstance()
         {
             if(_store == null)
