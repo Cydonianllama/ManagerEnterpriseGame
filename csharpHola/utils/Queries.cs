@@ -15,9 +15,10 @@ namespace csharpHola.utils
             return FINAL_QUERY;
         }
 
-        public String QUERY_CREATE_CLIENT(String Fullname,String Bithdate)
+        public String QUERY_CREATE_CLIENT()
         {
-            String QUERY = "INSERT INTO person(Fullname,Birthdate) values("+ Fullname + "," + Bithdate +")";
+            //String QUERY = "INSERT INTO person(FullName,Bithday) values(@FullName,@Bithday)";
+            String QUERY = "INSERT INTO clients() values();";
             return QUERY;
         }
         public String QUERY_UPDATE_CLIENT()

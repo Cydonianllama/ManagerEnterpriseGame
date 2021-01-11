@@ -1,40 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace csharpHola.entities
 {
     public class Ticket
     {
-        private String _ticketCode;
-        private DateTime _dateEmission;
-        private String _clientCode;
+        private string _idTicket;
+        private string _idClient;
+        private DateTime _emissionDate;
+        private DateTime _expirationDate;
 
-        public String TicketCode
+        public string IdTicket
         {
-            get => _ticketCode;
-            set => _ticketCode = value;
+            get => _idTicket;
+            set => _idTicket = value;
         }
-        public DateTime DateEmission
+        public string IdClient
         {
-            get => _dateEmission;
-            set => _dateEmission = value;
+            get => _idClient;
+            set => _idClient = value;
         }
-        public String ClientCode
+        public DateTime EmissionDate
         {
-            get => _clientCode;
-            set => _clientCode = value;
+            get => _emissionDate;
+            set => _emissionDate = value;
+        }
+        public DateTime ExpirationDate
+        {
+            get => _expirationDate;
+            set => _expirationDate = value;
         }
 
         public Ticket(
-            String ticketCode,
-            DateTime dateEmission,
-            String clientCode
-            ) 
+            string idTicket,
+            string idClient,
+            DateTime emissionDate,
+            DateTime expirationDate)
         {
-            this.TicketCode = ticketCode;
-            this.DateEmission = dateEmission;
-            this.ClientCode = clientCode;
+            this._idClient = idClient;
+            this._idTicket = idTicket;
+            this._emissionDate = emissionDate;
+            this._expirationDate = expirationDate;
         }
+        public Ticket()
+        {
+
+        }
+
     }
+
 }

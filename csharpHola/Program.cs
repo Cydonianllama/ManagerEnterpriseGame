@@ -9,17 +9,6 @@ using csharpHola.models;
 
 namespace csharpHola
 {
-    class myGeneric<T>
-    {
-        public bool isCorrect;
-        public List<T> a;
-        public void holasoygenerico()
-        {
-            dynamic hola = "555";
-            hola = 32;
-        }
-    }
-
     class Program
     {
         private static bool isRunning = true;
@@ -31,7 +20,7 @@ namespace csharpHola
 
         private static void Options(String option)
         {
-            ControllerTicket CTicket = new ControllerTicket();
+            //ControllerTicket CTicket = new ControllerTicket();
             switch (option)
             {
                 case Commands.CREATE_CLIENT:
@@ -39,20 +28,20 @@ namespace csharpHola
                     break;
 
                 case Commands.CREATE_TICKET:
-                    DateTime a = new DateTime(2020, 12, 20);
-                    CTicket.CreateTicket("555",a,"195");
-                    Store.GetInstance().tickets.ForEach(p => Console.WriteLine(p.ClientCode));//test
+                    //DateTime a = new DateTime(2020, 12, 20);
+                    //CTicket.CreateTicket("555",a,"195");
+                    //Store.GetInstance().tickets.ForEach(p => Console.WriteLine(p.ClientCode));//test
                     break;
 
                 case Commands.DELETE_TICKET:
-                    CTicket.DestroyTicket("195");
+                    //CTicket.DestroyTicket("195");
                     break;
 
                 case Commands.GET_CLIENTS:
-                    
+                    controllerCliente.getInstance().GetAllClients();
                     break;
                 case Commands.VERSION_TICKET:
-                    Console.WriteLine("version 0.6 estimated");
+                    Console.WriteLine("version 0.7 estimated");
                     break;
 
                 case Commands.QUIT_APP:
@@ -70,7 +59,6 @@ namespace csharpHola
         }
         static void Main()
         {
-            ModelClient.GetInstance().getClients();
             LoopApp();
         }
     }

@@ -9,12 +9,13 @@ namespace csharpHola.controllers
   
     class ControllerTicket
     {
+        /*
         public void CreateTicket(
             String ticketcode ,
             DateTime emission , 
             String clientcode)
         {
-            Ticket auxTicket = new Ticket(ticketcode, emission, clientcode);
+            ticket auxTicket = new ticket(ticketcode, emission, clientcode);
             Store.GetInstance().tickets.Add(auxTicket);
         }
         public void DestroyTicket(
@@ -22,8 +23,8 @@ namespace csharpHola.controllers
             )
         {
             //Store.GetInstance().tickets.ForEach( p => p.ClientCode = "hola" );
-            List<Ticket> ticket_ = Store.GetInstance().tickets;
-            foreach(Ticket t in ticket_)
+            List<ticket> ticket_ = Store.GetInstance().tickets;
+            foreach(ticket t in ticket_)
             {
                 if(t.ClientCode == clientCode)
                 {
@@ -31,7 +32,7 @@ namespace csharpHola.controllers
                 }
             }
         }
-        
+        */
         public void getStateTicket()
         {
 

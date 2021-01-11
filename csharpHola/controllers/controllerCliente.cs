@@ -4,6 +4,7 @@ using System.Text;
 using csharpHola.entities;
 using csharpHola.utils;
 using csharpHola.models;
+using System.IO;
 
 namespace csharpHola.controllers
 {
@@ -31,46 +32,49 @@ namespace csharpHola.controllers
             }
             return cc;
         }
-        public void CreateClient(
-            String Id, 
-            DateTime emission ,
-            DateTime  expiration,
-            String nameDocument,
-            String fullname,
-            String Code)
-        {
-            c = new Client(
-                Id,
-                emission,
-                expiration,
-                nameDocument,
-                fullname,
-                Code);
-
-            Store.GetInstance().clients.Add(c);
-            Store.GetInstance().clients.ForEach(e => Console.WriteLine(e.FullName));
-        }
         public void CreateClient()
         {
             Console.WriteLine("Documents :");
             Console.WriteLine("----------");
             Console.WriteLine("code (generated-automatic)");
             Console.WriteLine("fullname :");
-            String Fullname = Console.ReadLine();
+            String fullname = Console.ReadLine();
             Console.WriteLine("BirthDate /y/m/d :");
-            String DateBirthdate = Console.ReadLine();
-            DateTime BirthDate = DateTime.Parse(DateBirthdate);
-            c.EmissionDate = BirthDate;
-            c.FullName = Fullname;
-            ModelClient.GetInstance().createClient(c);
-        }
-        public void DeleteClient()
-        {
+            String birthdate_aux = Console.ReadLine();
+            DateTime birthdate = new DateTime();
+            try
+            {
+                birthdate = DateTime.Parse(birthdate_aux);
+            }
+            catch(Exception a)
+            {
+                Console.WriteLine(a);
+                birthdate_aux = Console.ReadLine();
+            }
+            Console.WriteLine("type identification");
+            String typeIdentification = Console.ReadLine();
+            Console.WriteLine("code identification");
+            String codeIdentification = Console.ReadLine();
 
+            PersonInfo auxPersonInfo = new PersonInfo(
+                fullname,
+                birthdate,
+                typeIdentification,
+                codeIdentification);
+
+            //insert into a database
+            string idCurrentClient = ModelClient.GetInstance().createClient(auxPersonInfo);
+
+            //store in the programm
+            Store.GetInstance().addClientToStore(new Client(auxPersonInfo,idCurrentClient));
+        }
+        public void DeleteClient(Client c)
+        {
+  
         }
         public void GetAllClients()
         {
-
+            ModelClient.GetInstance().getClients();
         }
         public void RequestClient()
         {

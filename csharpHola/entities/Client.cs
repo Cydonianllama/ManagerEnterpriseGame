@@ -4,45 +4,28 @@ using System.Text;
 
 namespace csharpHola.entities
 {
-    public class Client : Person
+    public class Client 
     {
-        private String _codeClient;
-        public String CodeClient
+        private PersonInfo _info;
+        private string _idClient;
+        public PersonInfo Info
         {
-            get => _codeClient;
-            set => _codeClient = value;
+            get => _info;
+            set => _info = value;
         }
-        public Client(String _codeClient)
+        public string IdClient
         {
-            this.CodeClient = _codeClient;
+            get => _idClient;
+            set => _idClient = value;
         }
-        public Client(String fullName, DateTime birthday) : base(
-                 fullName,
-                 birthday
-                 )
+        public Client(PersonInfo info,string idClient)
         {
-
+            this._info = info;
+            this._idClient = idClient;
         }
         public Client()
         {
 
-        }
-        public Client(
-            String ID,
-            DateTime emission,
-            DateTime expiration,
-            String name,
-            String fullname,
-            String codeclient) :
-        base(
-            ID,
-            emission,
-            expiration,
-            name,
-            fullname
-            )
-        {
-            this.CodeClient = codeclient;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace csharpHola.utils
     class Connection
     {
         //here you need to write your info about your  MYSQL database configuration
-        private const String ConnectionString = "datasource=localhost;username=root;Password=;Database=crudcs";
+        private const String ConnectionString = "datasource=localhost;username=root;Password=;Database=crudcs;Convert Zero Datetime=true;";
         public static MySqlConnection con = new MySqlConnection(ConnectionString);
         private static Connection _con;
         public static Connection GetInstance() {
